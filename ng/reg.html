@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Registration Form</title>
+  <link rel="stylesheet" href="reg.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Title section -->
+    <div class="title">Registration</div>
+    <div class="content">
+      <!-- Registration form -->
+      <form onsubmit="handleRegistration(event)">
+        <div class="user-details">
+          <!-- Input for Full Name -->
+          <div class="input-box">
+            <span class="details">Full Name</span>
+            <input type="text" id="fullName" placeholder="Enter your name" required>
+          </div>
+          <!-- Input for Username -->
+          <div class="input-box">
+            <span class="details">Username</span>
+            <input type="text" id="username" placeholder="Enter your username" required>
+          </div>
+          <!-- Input for Email -->
+          <div class="input-box">
+            <span class="details">Email</span>
+            <input type="email" id="email" placeholder="Enter your email" required>
+          </div>
+          <!-- Input for Phone Number -->
+          <div class="input-box">
+            <span class="details">Phone Number</span>
+            <input type="number" id="phoneNumber" placeholder="Enter your number" required>
+          </div>
+          <!-- Input for Password -->
+          <div class="input-box">
+            <span class="details">Password</span>
+            <input type="password" id="password" placeholder="Enter your password" required>
+          </div>
+          <!-- Input for Confirm Password -->
+          <div class="input-box">
+            <span class="details">Confirm Password</span>
+            <input type="password" id="confirmPassword" placeholder="Confirm your password" required>
+          </div>
+        </div>
+        <div class="gender-details">
+          <!-- Radio buttons for gender selection -->
+          <div class="gender-details">
+            <span class="gender-title">Gender</span>
+            <div class="category">
+              <label for="male">
+                <input type="radio" name="gender" id="male" value="Male" required>
+                <span>Male</span>
+              </label>
+              <label for="female">
+                <input type="radio" name="gender" id="female" value="Female" required>
+                <span>Female</span>
+              </label>
+              <label for="other">
+                <input type="radio" name="gender" id="other" value="Other" required>
+                <span>Other</span>
+              </label>
+            </div>
+          </div>
+        <!-- Submit button -->
+        <div class="button">
+          <input type="submit" value="Register" id="sub">
+        </div>
+      </form>
+    </div>
+  </div>
+<!--END HERE-->
+  <script>
+    function handleRegistration(event) {
+      event.preventDefault(); // Prevent default form submission
+
+      // Collect input values
+      const fullName = document.getElementById('fullName').value.trim();
+      const username = document.getElementById('username').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const phoneNumber = document.getElementById('phoneNumber').value.trim();
+      const password = document.getElementById('password').value.trim();
+      const confirmPassword = document.getElementById('confirmPassword').value.trim();
+      const gender = document.querySelector('input[name="gender"]:checked');
+
+      // Validate fields
+      if (!gender) {
+        alert('Please select your gender.');
+        return;
+      }
+
+      if (password !== confirmPassword) {
+        alert('Passwords do not match. Please try again.');
+        return;
+      }
+
+      // Display success message
+      alert('Registration successful!');
+
+      // Clear all fields
+      document.getElementById('fullName').value = "";
+      document.getElementById('username').value = "";
+      document.getElementById('email').value = "";
+      document.getElementById('phoneNumber').value = "";
+      document.getElementById('password').value = "";
+      document.getElementById('confirmPassword').value = "";
+      document.querySelectorAll('input[name="gender"]').forEach(radio => radio.checked = false);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Payment Gateway Form Design using HTML and CSS | Codehal</title>
+    <link rel="stylesheet" href="py.css">
+</head>
+
+<body>
+    <div class="container">
+        <form id="paymentForm" action="">
+            <div class="row">
+                <div class="column">
+                    <h3 class="title">Billing Address</h3>
+                    <div class="input-box">
+                        <span>Full Name :</span>
+                        <input type="text" id="fullName" placeholder="Jacob Aiden" required>
+                    </div>
+                    <div class="input-box">
+                        <span>Email :</span>
+                        <input type="email" id="email" placeholder="example@example.com" required>
+                    </div>
+                    <div class="input-box">
+                        <span>Address :</span>
+                        <input type="text" id="address" placeholder="Room - Street - Locality" required>
+                    </div>
+                    <div class="input-box">
+                        <span>City :</span>
+                        <input type="text" id="city" placeholder="Berlin" required>
+                    </div>
+
+                    <div class="flex">
+                        <div class="input-box">
+                            <span>State :</span>
+                            <input type="text" id="state" placeholder="Germany" required>
+                        </div>
+                        <div class="input-box">
+                            <span>Zip Code :</span>
+                            <input type="number" id="zipCode" placeholder="123 456" required>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="column">
+                    <h3 class="title">Payment</h3>
+                    <div class="input-box">
+                        <span>Cards Accepted :</span>
+                        <img src="imgcards.png" alt="">
+                    </div>
+                    <div class="input-box">
+                        <span>Name On Card :</span>
+                        <input type="text" id="cardName" placeholder="Mr. Jacob Aiden" required>
+                    </div>
+                    <div class="input-box">
+                        <span>Credit Card Number :</span>
+                        <input type="number" id="cardNumber" placeholder="1111 2222 3333 4444" required>
+                    </div>
+                    <div class="input-box">
+                        <span>Exp. Month :</span>
+                        <input type="text" id="expMonth" placeholder="August" required>
+                    </div>
+
+                    <div class="flex">
+                        <div class="input-box">
+                            <span>Exp. Year :</span>
+                            <input type="number" id="expYear" placeholder="2025" required>
+                        </div>
+                        <div class="input-box">
+                            <span>CVV :</span>
+                            <input type="number" id="cvv" placeholder="123" required>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="btn">Submit</button>
+        </form>
+
+        <!-- Payment Success Message -->
+        <div id="successMessage" class="success-message" style="display: none;">
+            <p>Payment Successful! Redirecting to the home page...</p>
+        </div>
+    </div>
+<!---END HERE-->
+    <script>
+        document.getElementById('paymentForm').addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            // Get all required input fields
+            const fullName = document.getElementById('fullName');
+            const email = document.getElementById('email');
+            const address = document.getElementById('address');
+            const city = document.getElementById('city');
+            const state = document.getElementById('state');
+            const zipCode = document.getElementById('zipCode');
+            const cardName = document.getElementById('cardName');
+            const cardNumber = document.getElementById('cardNumber');
+            const expMonth = document.getElementById('expMonth');
+            const expYear = document.getElementById('expYear');
+            const cvv = document.getElementById('cvv');
+
+            // Check if any field is empty
+            if (
+                fullName.value.trim() === '' ||
+                email.value.trim() === '' ||
+                address.value.trim() === '' ||
+                city.value.trim() === '' ||
+                state.value.trim() === '' ||
+                zipCode.value.trim() === '' ||
+                cardName.value.trim() === '' ||
+                cardNumber.value.trim() === '' ||
+                expMonth.value.trim() === '' ||
+                expYear.value.trim() === '' ||
+                cvv.value.trim() === ''
+            ) {
+                alert('Please fill out all fields before submitting.'); // Show error message
+            } else {
+                // Show success message
+                document.getElementById('successMessage').style.display = 'block';
+
+                // Redirect to the home page after 3 seconds
+                setTimeout(function () {
+                    window.location.href = 'index.html'; // Replace 'index.html' with your home page URL
+                }, 1000);
+            }
+        });
+    </script>
+</body>
+
+</html>
